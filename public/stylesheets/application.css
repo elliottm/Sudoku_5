@@ -1,25 +1,63 @@
+body {
+  background-image:url('http://cbladey.com/osong/Ban1.gif'); 	
+  text-align: center;
+  font-family: Arial;
+}
+
+header {
+  background-color: #ffffff;
+  height: 100px;
+  width: 100%;
+  z-index: 2; /* can do layer on top of another higher the number more forward it is*/
+  position: fixed;
+  top: 0px;  /* to make sure no line at top */
+  opacity: 0.1;
+}
+
+h1 { font-family: 'Flavors', cursive; 
+	font-weight: 400; 
+	font-size: 34pt;
+	}
+
 div.box, div.cell {
 	display: inline-block;
 }
 
-div.cell {
+.box {
+	background-color: #A600A6;
+	padding: 2px;
+}
+.cell {
 	border: 1px solid red;
+	padding: 1px;
+	margin: 0px;
+	opacity: 0.9;
 }
 
 .cell input {
-	width: 30px;
-	height: 30px;
+	font-family: 'Flavors', cursive;
+	font-weight: 400; 
+	font-size: 18pt;
+	width: 50px;
+	height: 50px;
 	text-align: center;
+	border-radius: 10px;
+	/*border: 0px;*/
 }
-
+/*sudoku div*/
 #sudoku {
   font-size: 0;
   text-align: center;
+  padding: 150px 0 50px 50px;
+  background-color: #4285f4;
+  opacity: 0.9
 }
 
-body {
-  text-align: center;
-  font-family: Arial;
+/*classes set in helper method*/
+
+.blanks {
+	background-color: yellow;
+	z-index: 3;
 }
 
 .incorrect {
@@ -27,5 +65,57 @@ body {
 }
 
 .value-provided {
-	background-color: #DDD;
+	background-color: #4285f4;
 }
+
+.completed {
+	background-color: #4285f4;
+}
+
+.check_solution {
+	background: -moz-linear-gradient(top,  rgba(232,46,58,0.5) 0%, rgba(48,42,224,0.75) 50%, rgba(125,185,232,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232,46,58,0.5)), color-stop(50%,rgba(48,42,224,0.75)), color-stop(100%,rgba(125,185,232,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(232,46,58,0.5) 0%,rgba(48,42,224,0.75) 50%,rgba(125,185,232,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(232,46,58,0.5) 0%,rgba(48,42,224,0.75) 50%,rgba(125,185,232,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(232,46,58,0.5) 0%,rgba(48,42,224,0.75) 50%,rgba(125,185,232,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(232,46,58,0.5) 0%,rgba(48,42,224,0.75) 50%,rgba(125,185,232,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80e82e3a', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+	border-radius: 5px:
+	border: none;
+	padding: 15px;
+	margin-top: 25px;
+	outline: none;
+	font-family: 'Julius Sans One', sans-serif;
+	font-weight: 700;
+	position: relative;
+	width: 140px;
+}
+.check_solution:active { /*when button is being clicked*/
+	background: -moz-linear-gradient(top, rgba(53,114,22,0.5) 0%, rgba(63,46,247,0.5) 50%, rgba(125,185,232,0.5) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(53,114,22,0.5)), color-stop(50%,rgba(63,46,247,0.5)), color-stop(100%,rgba(125,185,232,0.5))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(53,114,22,0.5) 0%,rgba(63,46,247,0.5) 50%,rgba(125,185,232,0.5) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(53,114,22,0.5) 0%,rgba(63,46,247,0.5) 50%,rgba(125,185,232,0.5) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(53,114,22,0.5) 0%,rgba(63,46,247,0.5) 50%,rgba(125,185,232,0.5) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(53,114,22,0.5) 0%,rgba(63,46,247,0.5) 50%,rgba(125,185,232,0.5) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80357216', endColorstr='#807db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+.solution {
+	background-image:url('http://3.bp.blogspot.com/_tH4-5GDfhC8/TLJk9LYDPdI/AAAAAAAAAl8/txuQM-C-Ab8/s320/NI+flag+3.gif');
+	background-size: cover;
+	border-radius: 5px:
+	border: none;
+	padding: 15px;
+	margin-top: 25px;
+	outline: none;
+	font-family: 'Julius Sans One', sans-serif;
+	font-weight: 700;
+	position: relative;
+	width: 140px;
+}
+
+
+
+
+
+

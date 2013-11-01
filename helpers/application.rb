@@ -1,3 +1,4 @@
+#erb helpers...
 helpers do
 
   def box_order_to_row_order(cells)

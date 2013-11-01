@@ -1,11 +1,16 @@
 require 'sinatra' # load sinatra
+require 'sinatra/partial'
 require_relative './lib/sudoku'
 require_relative './lib/cell.rb'
 require_relative './helpers/application.rb'
 
+set :partial_template_engine, :erb
 set :sessions, secret: "i now hate sudoku "
 
 get '/' do
+  #route goes through and sets sessions hashes
+  #then allocates to instance variables
+  #so they can be used by ERB.
   prepare_to_check_solution
   generate_new_puzzle_if_necessary
   @current_solution = session[:current_solution] || session[:puzzle]
@@ -16,10 +21,14 @@ end
 
 def generate_new_puzzle_if_necessary
   return if session[:current_solution]
+  generate_new_puzzle    
+end
+
+def generate_new_puzzle
   sudoku = random_sudoku
   session[:solution] = sudoku
   session[:puzzle] = puzzle(sudoku)
-  session[:current_solution] = session[:puzzle]    
+  session[:current_solution] = session[:puzzle]
 end
 
 def prepare_to_check_solution
@@ -43,17 +52,25 @@ def puzzle(sudoku)
 end
 
 post '/' do
-  cells = box_order_to_row_order(params[:cell])  
+  # puts "Cells: #{params[:cell].inspect}"
+  cells = box_order_to_row_order(params[:cell]) #params = essentially received from the internet.  
+  # puts "Cells: #{session[:current_solution].inspect}"
   session[:current_solution] = cells.map{|value| value.to_i }.join
+  # puts "Cells: #{session[:current_solution].inspect}"
   session[:check_solution] = true
   redirect to("/")
 end
 
 get '/solution' do
   @current_solution = session[:solution]
-  @solution = @current_solution
+  @solution = @current_solution #WTF?
   @puzzle = session[:puzzle]
   erb :index
+end
+
+get '/new' do
+  generate_new_puzzle
+  redirect to ('/')
 end
 
 
